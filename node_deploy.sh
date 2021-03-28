@@ -29,16 +29,13 @@ sudo rm -rf /usr/local/go
 curl https://dl.google.com/go/go1.15.7.linux-amd64.tar.gz | sudo tar -C/usr/local -zxvf -
 
 # Update environment variables to include go
-cat <<'EOF' >>$HOME/.profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-EOF
-source $HOME/.profile
 
 #Agoric installation
-git clone https://github.com/Agoric/agoric-sdk -b master
+git clone https://github.com/Agoric/agoric-sdk -b @agoric/sdk@2.15.1
 cd agoric-sdk
 
 # Install and build Agoric Javascript packages
@@ -53,10 +50,7 @@ yarn build
 ag-chain-cosmos version --long
 
 #Exiting agoric directory
-cd ../../../
-
-
-# Checking Network Parameters
+cd $HOME
 
 # First, get the network config for the current network.
 curl https://testnet.agoric.net/network-config > chain.json
@@ -69,7 +63,7 @@ echo $chainName
 
 
 # First time initialization of validator
-ag-chain-cosmos init --chain-d $chainName $moniker
+ag-chain-cosmos init --chain-id $chainName $moniker
 
 # Download the genesis file
 curl https://testnet.agoric.net/genesis.json > $HOME/.ag-chain-cosmos/config/genesis.json 
@@ -110,5 +104,11 @@ LimitNOFILE=4096
 WantedBy=multi-user.target
 EOF
 
+sudo systemctl enable ag-chain-cosmos
+sudo systemctl daemon-reload
+sudo systemctl start ag-chain-cosmos
 
+echo "To check on the status of syncing:
+
+ag-cosmos-helper status 2>&1 | jq .SyncInfo"
 
