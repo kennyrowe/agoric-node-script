@@ -3,7 +3,7 @@
 Quickly spin up an agoric node with this shell script
 
 
-1. `glit clone https://github.com/GLIBX/agoric-node-script.git`
+1. `git clone https://github.com/GLIBX/agoric-node-script.git`
 2. `cd agoric-node-script`
 3. `chmod +x node_deploy.sh`
 4. `bash node_deploy.sh`
