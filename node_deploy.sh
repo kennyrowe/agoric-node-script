@@ -35,8 +35,8 @@ export GOPATH=$HOME/go
 export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 EOF
-
 source $HOME/.profile
+cd $HOME
 
 #Agoric installation
 git clone https://github.com/Agoric/agoric-sdk -b @agoric/sdk@2.15.1
@@ -54,7 +54,7 @@ yarn build
 ag-chain-cosmos version --long
 
 #Exiting agoric directory
-cd $HOME
+cd ../../
 
 # First, get the network config for the current network.
 curl https://testnet.agoric.net/network-config > chain.json
@@ -112,7 +112,7 @@ sudo systemctl enable ag-chain-cosmos
 sudo systemctl daemon-reload
 sudo systemctl start ag-chain-cosmos
 
-echo "To check on the status of syncing:
-
+echo "To check on the ag service and status of syncing use commands below:
+journalctl -u ag-chain-cosmos.service -f 
 ag-cosmos-helper status 2>&1 | jq .SyncInfo"
 
