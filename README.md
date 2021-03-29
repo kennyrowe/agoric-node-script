@@ -9,3 +9,10 @@ Quickly spin up an agoric node with this shell script
 4. `sudo bash node_deploy.sh`
 5. "Enter the name of your moniker to initialize chain"
 7. Once the script is completed, to check if your node is syncing use command  `ag-cosmos-helper status 2>&1 | jq .SyncInfo`
+
+
+
+
+# TODO
+
+Automate sentry nodes deployment vpn tunnel
