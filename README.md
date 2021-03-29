@@ -15,4 +15,4 @@ Quickly spin up an agoric node with this shell script
 
 # TODO
 
-Automate sentry nodes deployment vpn tunnel
+Automate sentry nodes deployment with vpn tunnel
