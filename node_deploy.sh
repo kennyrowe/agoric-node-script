@@ -39,7 +39,7 @@ source $HOME/.profile
 cd $HOME
 
 #Agoric installation
-git clone https://github.com/Agoric/agoric-sdk -b @agoric/sdk@2.15.1
+git clone https://github.com/Agoric/agoric-sdk -b agorictest-8
 cd agoric-sdk
 
 # Install and build Agoric Javascript packages
